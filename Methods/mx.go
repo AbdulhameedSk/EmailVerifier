@@ -1,5 +1,5 @@
 // mx.go
-package emailverifier
+package Methods
 
 import "net"
 

@@ -1,5 +1,5 @@
 // disposable.go
-package emailverifier
+package Methods
 
 import "sync"
 

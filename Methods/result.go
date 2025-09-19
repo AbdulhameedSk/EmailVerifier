@@ -1,5 +1,5 @@
 // result.go
-package emailverifier
+package Methods
 
 type Syntax struct {
 	Username string

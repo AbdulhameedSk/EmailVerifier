@@ -2,23 +2,24 @@ package main
 
 import (
 	"log"
+    "Methods"
 )
 
 func main() {
 	email := "test@yopmail.com"
-	syntaxResult := ParseAddress(email)
+	syntaxResult := Methods.ParseAddress(email)
 	if !syntaxResult.Valid {
 		log.Printf("Email syntax is invalid: %s", email)
 		return
 	}
 
-	isDisposable := IsDisposable(syntaxResult.Domain)
+	isDisposable := Methods.IsDisposable(syntaxResult.Domain)
 	if isDisposable {
 		log.Printf("Email is from a disposable domain: %s", email)
 		return
 	}
 
-	mxResult, err := CheckMX(syntaxResult.Domain)
+	mxResult, err := Methods.CheckMX(syntaxResult.Domain)
 	if err != nil {
 		log.Printf("Failed to check MX records: %v", err)
 		return
@@ -28,7 +29,7 @@ func main() {
 		return
 	}
 
-	smtpResult, err := CheckSMTP(syntaxResult.Domain, syntaxResult.Username)
+	smtpResult, err := Methods.CheckSMTP(syntaxResult.Domain, syntaxResult.Username)
 	if err != nil {
 		log.Printf("SMTP check failed: %v", err)
 		return

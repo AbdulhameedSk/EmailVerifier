@@ -1,5 +1,5 @@
 // smtp.go
-package emailverifier
+package Methods
 
 import (
 	"errors"
@@ -7,7 +7,6 @@ import (
 	"net"
 	"net/smtp"
 	"strings"
-	"time"
 )
 
 // CheckSMTP performs an email verification on the passed domain via SMTP

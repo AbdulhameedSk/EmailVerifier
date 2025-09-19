@@ -1,5 +1,5 @@
 // address.go
-package emailverifier
+package Methods
 
 import (
 	"strings"

@@ -1,5 +1,5 @@
 // constants.go
-package emailverifier
+package Methods
 
 import "regexp"
 
