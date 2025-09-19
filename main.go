@@ -1,25 +1,24 @@
-package emailverifier
+package main
 
 import (
 	"log"
-	"github.com/AbdulhameedSk/EmailVerifier"
 )
 
 func main() {
 	email := "test@yopmail.com"
-	syntaxResult := emailverifier.ParseAddress(email)
+	syntaxResult := ParseAddress(email)
 	if !syntaxResult.Valid {
 		log.Printf("Email syntax is invalid: %s", email)
 		return
 	}
 
-	isDisposable := emailverifier.IsDisposable(syntaxResult.Domain)
+	isDisposable := IsDisposable(syntaxResult.Domain)
 	if isDisposable {
 		log.Printf("Email is from a disposable domain: %s", email)
 		return
 	}
 
-	mxResult, err := emailverifier.CheckMX(syntaxResult.Domain)
+	mxResult, err := CheckMX(syntaxResult.Domain)
 	if err != nil {
 		log.Printf("Failed to check MX records: %v", err)
 		return
@@ -29,7 +28,7 @@ func main() {
 		return
 	}
 
-	smtpResult, err := emailverifier.CheckSMTP(syntaxResult.Domain, syntaxResult.Username)
+	smtpResult, err := CheckSMTP(syntaxResult.Domain, syntaxResult.Username)
 	if err != nil {
 		log.Printf("SMTP check failed: %v", err)
 		return
