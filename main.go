@@ -1,7 +1,9 @@
 package emailverifier
 
 import (
-	"log")
+	"log"
+	"github.com/AbdulhameedSk/EmailVerifier"
+)
 
 func main() {
 	email := "test@yopmail.com"
